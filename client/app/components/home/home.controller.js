@@ -31,15 +31,12 @@ export default HomeController;
 
 /*
 TODO MUST
-5 - unit tests
-
 6 - README file
+3 - keyboard navigation
 
 8 - transfer as a directive
 
 TODO COULD BE
-3 - keyboard navigation
-
 1 - spinners during loading
 2 - showing letters in result
 4 - validation input/change
