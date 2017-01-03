@@ -1,6 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import Common from './common/common';
+import services from './services/services';
 import Components from './components/components';
 import AppComponent from './app.component';
 import 'normalize.css';
@@ -13,7 +14,8 @@ window.jQuery = $;
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    services.name,
   ])
   .config(($locationProvider) => {
     "ngInject";
