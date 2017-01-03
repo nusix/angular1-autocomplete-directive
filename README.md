@@ -2,15 +2,15 @@
 
 ## Getting Started
 
-To get started you can simply clone the nx-puzzle repository and install the dependencies:
+To get started you can simply clone the angular1-autocomplete-directive repository and install the dependencies:
 
 
 ### Prerequisites
 
-You need git to clone the nx-puzzle repository. You can get git from
+You need git to clone the angular1-autocomplete-directive repository. You can get git from
 [http://git-scm.com/](http://git-scm.com/).
 
-I also use node.js to initialize and test nx-puzzle. You must have node.js and
+I also use node.js to initialize and test angular1-autocomplete-directive. You must have node.js and
 its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 
@@ -19,8 +19,8 @@ its package manager (npm) installed.  You can get them from [http://nodejs.org/]
 Clone the app repository using git:
 
 ```
-git clone https://github.com/nusix/nx-puzzle.git
-cd nx-puzzle
+git clone https://github.com/nusix/angular1-autocomplete-directive.git
+cd angular1-autocomplete-directive
 ```
 
 
