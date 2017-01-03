@@ -1,8 +1,9 @@
 class AutocompleteController {
-  constructor(dataService) {
+  constructor(dataService, $scope) {
     'ngInject';
 
     this.dataService = dataService;
+    this.scope = $scope;
 
     this.country = '';
     this.countries = [];
@@ -35,6 +36,8 @@ class AutocompleteController {
   selectCountry(item) {
     this.country = item.name;
     this.clearList();
+
+    this.scope.$emit('country-selected', { country: this.country });
 
     console.log('HomeController -≥ selectCountry : Country was selected from auto-complete list item', item);
   }

@@ -5,20 +5,21 @@ import AutocompleteTemplate from './autocomplete.html';
 import DataService from '../../services/data.service';
 
 describe('Autocomplete', () => {
-  let $rootScope, $state, $location, $componentController, $compile, autocompleteController, dataService, $httpBackend,
+  let $rootScope, $scope, $state, $location, $componentController, $compile, autocompleteController, dataService, $httpBackend,
       urlBackend, succDataBackend;
 
   beforeEach(window.module(AutocompleteModule));
  
   beforeEach(inject(($injector, $http, _$httpBackend_) => {
     $rootScope = $injector.get('$rootScope');
+    $scope = $rootScope.$new();
     $componentController = $injector.get('$componentController');
     $state = $injector.get('$state');
     $location = $injector.get('$location');
     $compile = $injector.get('$compile');
 
     dataService = new DataService($http);
-    autocompleteController = new AutocompleteController(dataService);
+    autocompleteController = new AutocompleteController(dataService, $scope);
 
     $httpBackend = _$httpBackend_;
     urlBackend = 'https://restcountries.eu/rest/v1/name/';

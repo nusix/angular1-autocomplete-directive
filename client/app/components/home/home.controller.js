@@ -1,5 +1,12 @@
 class HomeController {
-  constructor() {
+  constructor($scope) {
+    'ngInject';
+    this.chosenCountry = '';
+    
+
+    $scope.$on('country-selected', (event, args) => {
+      this.chosenCountry = args.country;
+    });
   }
 }
 
