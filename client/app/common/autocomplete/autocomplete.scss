@@ -1,0 +1,19 @@
+@import '../common';
+
+.auto-complete-form-wrapper{
+  position: relative;
+
+  .auto-complete-box{
+    max-height: 200px;
+    overflow: scroll;
+    position: absolute;
+    width: 100%;
+
+
+    button.active {
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #337ab7;
+    }
+  }
+}
