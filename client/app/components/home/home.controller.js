@@ -31,7 +31,6 @@ export default HomeController;
 
 /*
 TODO MUST
-6 - README file
 3 - keyboard navigation
 
 8 - transfer as a directive
