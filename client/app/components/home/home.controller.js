@@ -9,11 +9,13 @@ class HomeController {
     this.selectedItemIndex = 0;
   }
 
+  //method for clearing the list and closing autocomplete div
   clearList() {
     this.countries = [];
     this.selectedItemIndex = 0;
   }
 
+  //method for loading data from the REST API after on change event - assigning data to countries property
   loadCountries() {
     if(this.country.length > 0){
       this.dataService.getDataFromBackend(this.country)
@@ -29,6 +31,7 @@ class HomeController {
     }
   }
 
+  //method called after clicking with mouse or enter/spacebar/arrow right key pressed for selecting item from a list
   selectCountry(item) {
     this.country = item.name;
     this.clearList();
@@ -36,6 +39,12 @@ class HomeController {
     console.log('HomeController -≥ selectCountry : Country was selected from auto-complete list item', item);
   }
 
+  /*
+    method for checking key pressed in input:
+      up/down - navigation in list
+      spacebar/enter/arrow right - selecting item
+      ESC - closing the auto complete div
+  */
   keyPressed(event) {
     var acceptedKeys = [13, 38, 40, 32, 39, 27];
 
@@ -56,15 +65,11 @@ class HomeController {
 export default HomeController;
 
 /*
-TODO MUST
-1 - comments
 
-8 - transfer as a directive
+TODO later
+1 - autocomplete as a directive or input with autocomplete as a component/directive
 
-TODO COULD BE
-1 - spinners during loading
-2 - showing letters in result
+2 - spinners during loading
+3 - highlighting used letters in result items in a list
 4 - validation input/change
-
-
 */

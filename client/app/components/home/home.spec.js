@@ -24,7 +24,6 @@ describe('Home', () => {
   }));
 
   describe('Module', () => {
-    // top-level specs: i.e., routes, injection, naming
     it('default component should be home', () => {
       $location.url('/');
       $rootScope.$digest();
@@ -48,7 +47,7 @@ describe('Home', () => {
       HomeController.country = 'dum';
       expect(HomeController.countries.length).toEqual(0);
 
-      //error
+      //error request from backend
       $httpBackend.when('GET', urlBackend + HomeController.country).respond(404, {});
       HomeController.loadCountries();
       $httpBackend.flush();
@@ -59,7 +58,7 @@ describe('Home', () => {
       HomeController.country = 'dum';
       expect(HomeController.countries.length).toEqual(0);
 
-      //success
+      //success request from backend
       $httpBackend.when('GET', urlBackend + HomeController.country).respond(200, succDataBackend);
       HomeController.loadCountries();
       $httpBackend.flush();
@@ -67,6 +66,7 @@ describe('Home', () => {
       expect(HomeController.countries.length).toEqual(1);
       expect(HomeController.countries[0].name).toEqual('dummy');
 
+      //checking empty string from input - list should be cleared (autocomplete will be hidden)
       HomeController.country = '';
       HomeController.loadCountries();
       expect(HomeController.countries.length).toEqual(0);
@@ -80,6 +80,7 @@ describe('Home', () => {
       HomeController.countries.push(dummyItem);
       expect(HomeController.countries.length).toEqual(1);
 
+      //item should be selected and name should be in input field
       HomeController.selectCountry(dummyItem);
       expect(HomeController.countries.length).toEqual(0);
       expect(HomeController.country).toEqual(dummyItem.name);
@@ -92,35 +93,41 @@ describe('Home', () => {
       HomeController.countries.push(dummyItem);
       HomeController.countries.push(dummyItem2);
 
+      //not accepted key code
       expect(HomeController.selectedItemIndex).toEqual(0);
       HomeController.keyPressed({keyCode : 66});
       expect(HomeController.selectedItemIndex).toEqual(0);
 
+      //arrow down - next should be selected
       HomeController.keyPressed({keyCode : 40});
       expect(HomeController.selectedItemIndex).toEqual(1);
 
+      //again arrow down - same item as it is last in a list
       HomeController.keyPressed({keyCode : 40});
       expect(HomeController.selectedItemIndex).toEqual(1);
 
+      //again arrow up - previous item should be selected
       HomeController.keyPressed({keyCode : 38});
       expect(HomeController.selectedItemIndex).toEqual(0);
 
+      //again arrow up - same item as it is first in a list
       HomeController.keyPressed({keyCode : 38});
       expect(HomeController.selectedItemIndex).toEqual(0);
 
+      //again down to next (last) item
       HomeController.keyPressed({keyCode : 40});
       expect(HomeController.selectedItemIndex).toEqual(1);
+      //enter key for selecting this item
       HomeController.keyPressed({keyCode : 13});
       expect(HomeController.country).toEqual(dummyItem2.name);
+      //list afer selecting is cleared
       expect(HomeController.countries.length).toEqual(0);
 
       HomeController.countries.push(dummyItem);
       HomeController.countries.push(dummyItem2);
+      //escape key for closing auutocomplete - list is cleared
       HomeController.keyPressed({keyCode : 27});
       expect(HomeController.countries.length).toEqual(0);
-
-
-
     });
   });
 });
