@@ -6,5 +6,12 @@
     overflow: scroll;
     position: absolute;
     width: 100%;
+
+
+    button.active {
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #337ab7;
+    }
   }
 }

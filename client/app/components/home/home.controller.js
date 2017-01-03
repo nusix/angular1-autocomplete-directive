@@ -6,6 +6,7 @@ class HomeController {
 
     this.country = '';
     this.countries = [];
+    this.selectedItemIndex = 0;
   }
 
   loadCountries() {
@@ -22,8 +23,23 @@ class HomeController {
   selectCountry(item) {
     this.country = item.name;
     this.countries = [];
+    this.selectedItemIndex = 0;
 
     console.log('HomeController -≥ selectCountry : Country was selected from auto-complete list item', item);
+  }
+
+  keyPressed(event) {
+    var acceptedKeys = [13, 38, 40, 32, 39];
+
+    if(this.countries.length > 0 && acceptedKeys.indexOf(event.keyCode) !== -1){
+      if(event.keyCode === 40){
+        this.selectedItemIndex = (this.selectedItemIndex + 1) !==  this.countries.length ? this.selectedItemIndex + 1 : this.selectedItemIndex;
+      }else if(event.keyCode === 38){
+        this.selectedItemIndex = this.selectedItemIndex  !==  0 ? this.selectedItemIndex - 1 : this.selectedItemIndex;
+      }else{
+        this.selectCountry(this.countries[this.selectedItemIndex]);
+      }
+    }
   }
 }
 
@@ -31,8 +47,6 @@ export default HomeController;
 
 /*
 TODO MUST
-3 - keyboard navigation
-
 8 - transfer as a directive
 
 TODO COULD BE

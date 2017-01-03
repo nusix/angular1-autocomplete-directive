@@ -1,20 +1,18 @@
 <main>
   <div>
-    <h1>Found in {{ $ctrl.name }}.html</h1>
-
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1>auto-complete directive</h1>
+        <h1>AngularJS1 auto-complete directive</h1>
         <p>asd...</p>
 
         <form>
           <div class="auto-complete-form-wrapper form-group">
-            <input type="text" class="form-control" id="country" placeholder="Start typing country name..." ng-change="$ctrl.loadCountries()" ng-model="$ctrl.country" ng-model-options="{ debounce: 500 }">
+            <input type="text" class="form-control" id="country" placeholder="Start typing country name..." ng-change="$ctrl.loadCountries()" ng-model="$ctrl.country" ng-model-options="{ debounce: 500 }" autofocus ng-keyup="$ctrl.keyPressed($event)" autocomplete="off">
 
             <div class="auto-complete-box list-group">
-              <button type="button" class="list-group-item" ng-repeat="itemCountry in $ctrl.countries" ng-click="$ctrl.selectCountry(itemCountry)">
+              <button type="button" class="list-group-item {{ $ctrl.selectedItemIndex === $index ? 'active' : ''}}" ng-repeat="itemCountry in $ctrl.countries track by $index" ng-click="$ctrl.selectCountry(itemCountry)">
                 {{ itemCountry.name }}
               </button>
             </div>
