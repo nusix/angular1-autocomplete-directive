@@ -14,7 +14,7 @@
             <input type="text" class="form-control" id="country" placeholder="Start typing country name..." ng-change="$ctrl.loadCountries()" ng-model="$ctrl.country" ng-model-options="{ debounce: 500 }">
 
             <div class="auto-complete-box list-group">
-              <button type="button" class="list-group-item" ng-repeat="itemCountry in $ctrl.countries">
+              <button type="button" class="list-group-item" ng-repeat="itemCountry in $ctrl.countries" ng-click="$ctrl.selectCountry(itemCountry)">
                 {{ itemCountry.name }}
               </button>
             </div>

@@ -18,14 +18,19 @@ class HomeController {
       console.error('HomeController -≥ loadCities : There was an error during loading data for country:', this.country,'. Response:', res);
     });
   }
+
+  selectCountry(item) {
+    this.country = item.name;
+    this.countries = [];
+
+    console.log('HomeController -≥ selectCountry : Country was selected from auto-complete list item', item);
+  }
 }
 
 export default HomeController;
 
 /*
 TODO MUST
-7 - mouse navigation and selecting
-
 4 - validation
 
 5 - unit tests
