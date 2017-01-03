@@ -38,6 +38,7 @@ describe('Home', () => {
       expect(HomeController.countries).toBeDefined();
       expect(HomeController.selectCountry).toBeDefined();
       expect(HomeController.loadCountries).toBeDefined();
+      expect(HomeController.selectedItemIndex).toBeDefined();
 
       expect(HomeController.country).toEqual('');
       expect(HomeController.countries.length).toEqual(0);
@@ -65,6 +66,10 @@ describe('Home', () => {
 
       expect(HomeController.countries.length).toEqual(1);
       expect(HomeController.countries[0].name).toEqual('dummy');
+
+      HomeController.country = '';
+      HomeController.loadCountries();
+      expect(HomeController.countries.length).toEqual(0);
     });
 
     it('testing selectCountry(item)', () => { 
@@ -78,6 +83,44 @@ describe('Home', () => {
       HomeController.selectCountry(dummyItem);
       expect(HomeController.countries.length).toEqual(0);
       expect(HomeController.country).toEqual(dummyItem.name);
+    });
+
+    it('testing keyPressed()', () => { 
+      var dummyItem = {name : 'Slovakia'},
+          dummyItem2 = {name : 'Slovakia2'};
+
+      HomeController.countries.push(dummyItem);
+      HomeController.countries.push(dummyItem2);
+
+      expect(HomeController.selectedItemIndex).toEqual(0);
+      HomeController.keyPressed({keyCode : 66});
+      expect(HomeController.selectedItemIndex).toEqual(0);
+
+      HomeController.keyPressed({keyCode : 40});
+      expect(HomeController.selectedItemIndex).toEqual(1);
+
+      HomeController.keyPressed({keyCode : 40});
+      expect(HomeController.selectedItemIndex).toEqual(1);
+
+      HomeController.keyPressed({keyCode : 38});
+      expect(HomeController.selectedItemIndex).toEqual(0);
+
+      HomeController.keyPressed({keyCode : 38});
+      expect(HomeController.selectedItemIndex).toEqual(0);
+
+      HomeController.keyPressed({keyCode : 40});
+      expect(HomeController.selectedItemIndex).toEqual(1);
+      HomeController.keyPressed({keyCode : 13});
+      expect(HomeController.country).toEqual(dummyItem2.name);
+      expect(HomeController.countries.length).toEqual(0);
+
+      HomeController.countries.push(dummyItem);
+      HomeController.countries.push(dummyItem2);
+      HomeController.keyPressed({keyCode : 27});
+      expect(HomeController.countries.length).toEqual(0);
+
+
+
     });
   });
 });
