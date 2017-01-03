@@ -1,16 +1,16 @@
-# angular1-autocomplete-directive — sample of input with autocomplete functionality from backend
+# angular1-autocomplete — sample of input with autocomplete functionality from backend
 
 ## Getting Started
 
-To get started you can simply clone the angular1-autocomplete-directive repository and install the dependencies:
+To get started you can simply clone the app repository and install the dependencies:
 
 
 ### Prerequisites
 
-You need git to clone the angular1-autocomplete-directive repository. You can get git from
+You need git to clone the app repository. You can get git from
 [http://git-scm.com/](http://git-scm.com/).
 
-I also use node.js to initialize and test angular1-autocomplete-directive. You must have node.js and
+I also use node.js to initialize and test app. You must have node.js and
 its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 
@@ -94,7 +94,7 @@ angular1-autocomplete-directive/              --> app root folder
                     home.scss         --> css style for this component
                     home.js         --> config for this component
                     home.component.js         --> home component definition
-            common/            --> folder with services
+            services/            --> folder with services
             app.js          --> all modules of the app are defined in this file
         index.html             --> app layout file (the main html template file of the app)
     dist/               --> built project
