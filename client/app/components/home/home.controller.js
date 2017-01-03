@@ -24,8 +24,6 @@ export default HomeController;
 
 /*
 TODO MUST
-3 - list absolute position
-
 7 - mouse navigation and selecting
 
 4 - validation

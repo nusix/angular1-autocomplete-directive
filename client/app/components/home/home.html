@@ -10,10 +10,10 @@
         <p>asd...</p>
 
         <form>
-          <div class="form-group">
+          <div class="auto-complete-form-wrapper form-group">
             <input type="text" class="form-control" id="country" placeholder="Start typing country name..." ng-change="$ctrl.loadCountries()" ng-model="$ctrl.country" ng-model-options="{ debounce: 500 }">
 
-            <div class="list-group">
+            <div class="auto-complete-box list-group">
               <button type="button" class="list-group-item" ng-repeat="itemCountry in $ctrl.countries">
                 {{ itemCountry.name }}
               </button>
