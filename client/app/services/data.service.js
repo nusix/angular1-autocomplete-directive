@@ -5,15 +5,8 @@ export default class DataService {
   };
 
   //call http request for getting data from backend
-  getDataFromBackend(city){
-    // this.$http.get(this.url).then(function(res){
-      console.log('DataService -≥ getDataFromBackend : Carousel data were loaded successfully for city:', city,'. Response:');
-      // console.log('CarouselService -≥ getCarouselDataFromBackend : Carousel data were loaded successfully. Response:',res);
-    //   successCbk(res);  
-    // }, function (res) {
-    //   console.error('CarouselService -≥ getCarouselDataFromBackend : There was an error during loading carousel data. Response:', res);
-    //   errorCbk(res);  
-    // });
+  getDataFromBackend(country){
+    return this.$http.get(this.url + country);
   }
 }
 

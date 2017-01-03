@@ -4,11 +4,19 @@ class HomeController {
 
     this.dataService = dataService;
 
-    this.city = '';
+    this.country = '';
+    this.countries = [];
   }
 
-  loadCities() {
-    this.dataService.getDataFromBackend(this.city);
+  loadCountries() {
+    this.dataService.getDataFromBackend(this.country)
+    .then((res) => {
+      this.countries = res.data;
+      console.log('HomeController -≥ loadCities : Data were loaded successfully for country:', this.country,'. Response:', res);
+    })
+    .catch((res) => {
+      console.error('HomeController -≥ loadCities : There was an error during loading data for country:', this.country,'. Response:', res);
+    });
   }
 }
 
@@ -16,13 +24,16 @@ export default HomeController;
 
 /*
 TODO MUST
-1 - request from server
-2 - show list
 3 - list absolute position
+
+7 - mouse navigation and selecting
+
 4 - validation
+
 5 - unit tests
 6 - README file
-7 - mouse navigation
+
+8 - transfer as a directive
 
 TODO COULD BE
 1 - spinners during loading

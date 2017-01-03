@@ -11,7 +11,13 @@
 
         <form>
           <div class="form-group">
-            <input type="text" class="form-control" id="city" placeholder="Start typing city name..." ng-change="$ctrl.loadCities()" ng-model="$ctrl.city" ng-model-options="{ debounce: 500 }">
+            <input type="text" class="form-control" id="country" placeholder="Start typing country name..." ng-change="$ctrl.loadCountries()" ng-model="$ctrl.country" ng-model-options="{ debounce: 500 }">
+
+            <div class="list-group">
+              <button type="button" class="list-group-item" ng-repeat="itemCountry in $ctrl.countries">
+                {{ itemCountry.name }}
+              </button>
+            </div>
           </div>
         </form>
       </div>
